@@ -1,0 +1,218 @@
+﻿<Window x:Class="FiveDayForecastApp.View.WeatherWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:FiveDayForecastApp.ViewModel"
+        xmlns:convert="clr-namespace:FiveDayForecastApp.ViewModel.Helper"
+        xmlns:local="clr-namespace:FiveDayForecastApp.View"
+        xmlns:controls="clr-namespace:FiveDayForecastApp.View.UserControls"
+        mc:Ignorable="d"
+        Title="WeatherWindow"
+        FontFamily="Signika"
+        FontWeight="DemiBold"
+        Foreground="#FFFAE0"
+        SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <ResourceDictionary>
+            <vm:WeatherViewModel x:Key="vm"/>
+            <convert:IntToImageConverter x:Key="IntToImage"/>
+
+            <Style TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="5"
+                                    Background="#E3F4FE"
+                                    Height="{TemplateBinding Height}"
+                                    Padding="5">
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Text="{TemplateBinding Content}"
+                                           FontSize="15"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <Grid Background="#1D71F2"
+          DataContext="{StaticResource vm}">
+
+
+        
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Five"
+                   FontSize="70"
+                   Foreground="#FFFAE0"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   Visibility="{Binding SearchVis}"/>
+        <TextBlock Text="Day"
+                   FontSize="70"
+                   Foreground="#FFFAE0"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   Visibility="{Binding SearchVis}"/>
+        <TextBlock Text="Forecast."
+                   FontSize="70"
+                   Foreground="#FFFAE0"
+                   Grid.Column="1"
+                   Grid.Row="3"
+                   Visibility="{Binding SearchVis}"/>
+
+        <StackPanel Grid.Row="4"
+                    Grid.Column="1"
+                    Orientation="Vertical"
+                    Visibility="{Binding SearchVis}">
+            <Label Content="Enter a city:"
+                   HorizontalAlignment="Center"
+                   Foreground="#FFFAE0"
+                   FontSize="22"/>
+            <TextBox Text="{Binding CitySearch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,0"
+                     FontSize="22"/>
+            <Button Content="Search"
+                    Command="{Binding SearchCommand}"
+                    CommandParameter="{Binding CitySearch}"
+                    Margin="0,5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5"
+                    Grid.Column="1" 
+                    Orientation="Vertical"
+                    Visibility="{Binding SearchVis}">
+            <ListView ItemsSource="{Binding Cities}"
+                      SelectedValue="{Binding SelectedCity}"
+                      Visibility="{Binding CitiesVis}"
+                      Height="150"
+                      Width="400"
+                      FontSize="18">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding LocalizedName}"
+                                       Grid.Column="0"/>
+                            <TextBlock Text="{Binding Country.LocalizedName}"
+                                       HorizontalAlignment="Right"
+                                       Grid.Column="1"
+                                       Margin="5,0"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Content="Get Five Day Forecast"
+                    Command="{Binding GetForecastCommand}"
+                    CommandParameter="{Binding SelectedCity}"
+                    Visibility="{Binding CitiesVis}"
+                    Margin="0,5"/>
+        </StackPanel>
+
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                Background="#19C3FB"
+                CornerRadius="15"
+                Grid.RowSpan="2"
+                Visibility="{Binding FiveDayVis}"
+                Height="230"
+                Margin="0,0,0,10">
+            <StackPanel DataContext="{Binding SelectedDay}">
+                <TextBlock HorizontalAlignment="Center" Text="{Binding Date, StringFormat=D}"
+                           FontSize="30"
+                           Margin="5"/>
+                <Image Source="{Binding Day.Icon, Converter={StaticResource IntToImage}}"
+                       Height="110"
+                       Margin="0,5,0,15"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical"
+                                Grid.Column="0"
+                                HorizontalAlignment="Center">
+                        <TextBlock Text="High"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"/>
+                        <TextBlock Text="{Binding Temperature.Maximum.Value, StringFormat={}{0}°C}"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical"
+                                Grid.Column="1"
+                                HorizontalAlignment="Center">
+                        <TextBlock Text="Low"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"/>
+                        <TextBlock Text="{Binding Temperature.Minimum.Value, StringFormat={}{0}°C}"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical"
+                                Grid.Column="2"
+                                HorizontalAlignment="Center">
+                        <TextBlock Text="Precipitation"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"/>
+                        <TextBlock Text="{Binding Day.HasPrecipitation}"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            
+        </Border>
+        
+        <ListView ItemsSource="{Binding DailyForecasts}"
+                  SelectedValue="{Binding SelectedDay}"
+                  Visibility="{Binding FiveDayVis}"
+                  Background="Transparent"
+                  Grid.Column="1"
+                  Grid.Row="3"
+                  BorderThickness="0"
+                  BorderBrush="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <controls:DailyForecastControl DailyForecast="{Binding}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="4"
+                Grid.Column="1"
+                Height="30"
+                Content="New Search"
+                Visibility="{Binding FiveDayVis}"
+                Margin="0,5"/>
+
+    </Grid>
+</Window>

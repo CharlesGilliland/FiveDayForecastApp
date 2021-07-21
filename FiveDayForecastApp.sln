@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveDayForecastApp", "FiveDayForecastApp\FiveDayForecastApp.csproj", "{D24DBACC-EE67-40DE-9CB6-4B25B139ADBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D24DBACC-EE67-40DE-9CB6-4B25B139ADBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24DBACC-EE67-40DE-9CB6-4B25B139ADBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24DBACC-EE67-40DE-9CB6-4B25B139ADBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24DBACC-EE67-40DE-9CB6-4B25B139ADBC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA8B3814-08A4-49B3-9F68-1045FC9A34EA}
+	EndGlobalSection
+EndGlobal

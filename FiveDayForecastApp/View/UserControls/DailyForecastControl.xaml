@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="FiveDayForecastApp.View.UserControls.DailyForecastControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FiveDayForecastApp.View.UserControls"
+             xmlns:convert="clr-namespace:FiveDayForecastApp.ViewModel.Helper"
+             mc:Ignorable="d" 
+             d:DesignHeight="120" d:DesignWidth="500">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <convert:IntToImageConverter x:Key="convert"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Border BorderThickness="3"
+            CornerRadius="20"
+            Background="#1C9CF6">
+        <Grid Background="Transparent"
+              Height="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="0"
+                        VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="10,0,0,0"
+                           Text="{Binding Date, StringFormat=D}"
+                           FontSize="20"
+                           Foreground="#FFFAE0"/>
+                <TextBlock FontSize="16"
+                           Foreground="#E3F4FE"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="10,0,0,0"
+                           Text="{Binding Day.IconPhrase}"/>
+
+            </StackPanel>
+
+            <Image Source="{Binding Day.Icon, Converter={StaticResource convert}}"
+                   Grid.Column="1"
+                   Margin="15,5"
+                   Height="70"/>
+
+            <TextBlock Grid.Column="2"
+                       Text="{Binding Temperature.Maximum.Value}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="30"
+                       Margin="10,0,10,0"
+                       Foreground="#FFFAE0"/>
+        </Grid>
+    </Border>
+</UserControl>
