@@ -42,7 +42,6 @@ namespace FiveDayForecastApp.ViewModel
             { 
                 selectedCity = value;
                 OnPropertyChanged("SelectedCity");
-                GetFiveDayForecast();
             }
         }
 
@@ -115,6 +114,7 @@ namespace FiveDayForecastApp.ViewModel
 
         public SearchCommand SearchCommand { get; set; }
         public GetForecastCommand GetForecastCommand { get; set; }
+        public NewSearchCommand NewSearchCommand { get; set; }
 
         public WeatherViewModel()
         {
@@ -123,6 +123,7 @@ namespace FiveDayForecastApp.ViewModel
 
             SearchCommand = new SearchCommand(this);
             GetForecastCommand = new GetForecastCommand(this);
+            NewSearchCommand = new NewSearchCommand(this);
 
             CitiesVis = Visibility.Collapsed;
             SearchVis = Visibility.Visible;
@@ -157,7 +158,15 @@ namespace FiveDayForecastApp.ViewModel
             {
                 DailyForecasts.Add(dailyforecast);
             }
+            SelectedDay = DailyForecasts[0];
         }
+
+        public void NewSearch()
+        {
+            SearchVis = Visibility.Visible;
+            FiveDayVis = Visibility.Collapsed;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string propertyName)
         {
