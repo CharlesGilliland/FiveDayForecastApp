@@ -14,9 +14,9 @@
     <None Remove="Images\Ice.png" />
     <None Remove="Images\NightClear.png" />
     <None Remove="Images\NightFog.png" />
+    <None Remove="Images\QuestionMark.png" />
     <None Remove="Images\Rain.png" />
     <None Remove="Images\RainAndIce.png" />
-    <None Remove="Images\Rainbow.png" />
     <None Remove="Images\Snow.png" />
     <None Remove="Images\Sun.png" />
     <None Remove="Images\SunStorm.png" />
@@ -43,13 +43,13 @@
     <Content Include="Images\NightFog.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\QuestionMark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Rain.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\RainAndIce.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\Rainbow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Snow.png">
