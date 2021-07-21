@@ -12,13 +12,33 @@ This information is then presented to the user in a list as well as a sepearte, 
 
 ## Usage
 - To view instructions from inside the application press the ? button located at the top right of the window
+
   ![](Images/AboutScreenshot.png)
+  
 - Enter a city for which you want to search (search capabilities are not enabled until this field contains a value)
+
+  ![](Images/EnterCityScreenshot.PNG)
+  
 - Press the 'Search' button
+
+  ![](Images/SearchScreenshot.png)
+  
 - Select the desired city from the list
+
+  ![](Images/SelectCityScreenshot.PNG)
+  
 - Press the 'Get 5 Day Forecast' button (this button is also not enabled until a selection has been made)
+
+  ![](Images/ForecastScreenshot.png)
+  
 - Change the focus of the top panel by selecting different days from the list
+
+  ![](Images/ChangeViewScreenshot.png)
+  
 - Press the 'New Search' button to start the process over again
+
+  ![](Images/NewSearchScreenshot.png)
+  
 
 ## Credits
 - Images sourced from : [https://icons8.com](https://icons8.com)
