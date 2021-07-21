@@ -12,6 +12,7 @@ This information is then presented to the user in a list as well as a sepearte, 
 
 ## Usage
 - To view instructions from inside the application press the ? button located at the top right of the window
+  ![](Images/AboutScreenshot.png)
 - Enter a city for which you want to search (search capabilities are not enabled until this field contains a value)
 - Press the 'Search' button
 - Select the desired city from the list
