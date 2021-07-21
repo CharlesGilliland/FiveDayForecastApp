@@ -13,19 +13,13 @@ using System.Windows.Shapes;
 namespace FiveDayForecastApp.View
 {
     /// <summary>
-    /// Interaction logic for WeatherWindow.xaml
+    /// Interaction logic for AboutWindow.xaml
     /// </summary>
-    public partial class WeatherWindow : Window
+    public partial class AboutWindow : Window
     {
-        public WeatherWindow()
+        public AboutWindow()
         {
             InitializeComponent();
-        }
-
-        private void HelpButton_Click(object sender, RoutedEventArgs e)
-        {
-            AboutWindow aboutWindow = new AboutWindow();
-            aboutWindow.Show();
         }
     }
 }

@@ -78,10 +78,12 @@
                        FontSize="70"
                        Foreground="#FFFAE0"
                        Visibility="{Binding SearchVis}"/>
-            <Button DockPanel.Dock="Right"
+            <Button x:Name="HelpButton" 
+                    DockPanel.Dock="Right"
                     VerticalAlignment="Top"
                     BorderThickness="0"
-                    Background="Transparent">
+                    Background="Transparent"
+                    Click="HelpButton_Click">
                 <Button.Content>
                     <StackPanel Orientation="Vertical">
                         <Image Source="../Images/QuestionMark.png"
