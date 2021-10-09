@@ -132,7 +132,17 @@ namespace FiveDayForecastApp.ViewModel
 
         public async void GetCitiesQuery()
         {
-            var cities = await AccuWeatherHelper.GetCities(CitySearch);
+            List<City> cities;
+            try
+            {
+                cities = await AccuWeatherHelper.GetCities(CitySearch);
+            } 
+            catch(Exception)
+            {
+                MessageBox.Show("Please check your connection and try again");
+                return;
+            }
+            
 
             Cities.Clear();
             foreach(City city in cities)

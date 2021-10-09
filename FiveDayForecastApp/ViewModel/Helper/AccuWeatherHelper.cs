@@ -10,7 +10,7 @@ namespace FiveDayForecastApp.ViewModel.Helper
 {
     public class AccuWeatherHelper
     {
-        public const string API_KEY = "u3piUB4U8kUch1YA9tbaDQ2fVAaDWdSK";
+        public const string API_KEY = "zG5PhDMMWkeutzuDGS3HbG4jCxYwNuQz";
 
         public const string ENDPOINT_BASE_URL = "http://dataservice.accuweather.com/";
         public const string AUTOCOMPLETE_ENDPOINT = "locations/v1/cities/autocomplete?apikey={0}&q={1}";
